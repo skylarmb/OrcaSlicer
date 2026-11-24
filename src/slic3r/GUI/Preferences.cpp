@@ -2065,6 +2065,15 @@ void PreferencesDialog::create_items()
     );
     g_sizer->Add(item_reduced_detail_mode);
 
+    auto item_preview_slow_render_hint = create_item_checkbox(
+        _L("Warn when the preview renders slowly"),
+        // TRN "Simplify preview while dragging" and "Shell only" are the option above and one of its values; keep them as translated there.
+        _L("Show a notification suggesting Shell only when the sliced preview draws slower than 15 frames per second for 5 seconds "
+           "while you drag it with \"Simplify preview while dragging\" off."),
+        "show_preview_slow_render_hint"
+    );
+    g_sizer->Add(item_preview_slow_render_hint);
+
     auto item_dim_previous_layers = create_item_checkbox(
         _L("Dim lower layers"),
         _L("When scrubbing the layer slider in the sliced preview, render the layers below the current one darkened so that only the layer being viewed is shown at full brightness."),

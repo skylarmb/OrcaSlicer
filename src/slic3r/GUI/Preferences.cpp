@@ -2058,13 +2058,9 @@ void PreferencesDialog::create_items()
         {"off", "solid", "shell"},
         // apply the new mode immediately to the currently loaded preview
         [](std::string value) {
-            if (Plater* plater = wxGetApp().plater()) {
-                if (GLCanvas3D* canvas = plater->get_preview_canvas3D()) {
-                    canvas->get_gcode_viewer().set_reduced_detail_mode(value);
-                    canvas->set_as_dirty();
-                    canvas->request_extra_frame();
-                }
-            }
+            if (Plater* plater = wxGetApp().plater())
+                if (GLCanvas3D* canvas = plater->get_preview_canvas3D())
+                    canvas->apply_preview_reduced_detail_mode(value);
         }
     );
     g_sizer->Add(item_reduced_detail_mode);
